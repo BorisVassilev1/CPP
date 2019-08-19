@@ -7,8 +7,15 @@ using namespace std;
  * THE "MANDELBROTH SET" CODE HAS NOT-MATCHING BRACKETS!!!
 */
 int main() {
+    ifstream inFile;
+    inFile.open("mandelbrot-titannic.txt");
     string brainFuckCode;
-    cin >> brainFuckCode;
+    while(inFile) {
+            string line;
+            inFile >> line;
+            brainFuckCode += line;
+    }
+
     ofstream outFile;
     outFile.open("outputFile.cpp");
     outFile << "#include <iostream>\n";
@@ -62,6 +69,7 @@ int main() {
     if(counter1 != counter2)
     {
         cout << "your code is invalid" << endl;
+        cout << counter1 << " " << counter2;
     }
     else
     {
