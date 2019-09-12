@@ -24,12 +24,27 @@ void constructBiTree(int* biTree,int* arr, int n) {
 
 }
 
+int sumBiTree(int* biTree, int i) {
+    i += 1;
+    int sum = 0;
+    while( i > 0) {
+        sum += biTree[i];
+        i -= i&(-i);///????
+    }
+    return sum;
+}
 
 
 int main() {
+    for(int i = 0; i < n; i ++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
     constructBiTree(tree, arr, n);
     for(int i = 0; i < n; i ++) {
         cout << tree[i] << " ";
     }
+    cout << endl;
+    cout << sumBiTree(tree,3);
 }
 

@@ -1,0 +1,15 @@
+orientirano lice:
+
+axb = za * yb - xb * ya = |a| * |b| * sin (alpha);
+
+scalarno proizvedenie:
+
+a.b = xa * xb + ya * yb = |a| * |b| * cos (alpha);
+
+
+ZADACHA!!!
+4) 
+	dava se n-ugulnik (ne zaduljitelno izpuknal) i krug.
+	da se nameri liceto na obshtata im chast.
+	
+	nameri presechnite tochki. smetni liceto -> dobavi chastite ot kruga
