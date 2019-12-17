@@ -56,19 +56,24 @@ void recalculate(int v1, int v2) {
 bool visited2[MAX_N];
 void dfs2(int prev, int curr) {
     ///recalculate from prev to curr
-    recalculate(prev, curr);
-    cout << curr;
+    if(curr != 0) {
+        recalculate(prev, curr);
+    }
+    //cout << curr;
     ansWin[curr] = isWin[curr];
 
     visited2[curr] = true;
     for(int i = 0; i < neigh[curr].size(); ++ i) {
         if(!visited2[neigh[curr][i]]) {
             dfs2(curr, neigh[curr][i]);
+            //cout << curr;
         }
     }
     ///recalculate from curr to prev
-    recalculate(curr, prev);
-    cout << prev;
+    if(curr != 0) {
+        recalculate(curr, prev);
+    }
+
 }
 
 int main() {
@@ -90,14 +95,15 @@ int main() {
         cout << isWin[i] << " ";
     }*/
 
-    cout << 0;
+    dfs2(0,0);
+
+    /*cout << 0;
     visited2[0] = true;
     for(int i = 0; i < neigh[0].size(); ++ i) {
         dfs2(0, i);
-    }
+    }*/
     cout << endl;
-
     for(int i = 0; i < n; i ++) {
-        cout << ansWin[i] << " ";
+        cout << !ansWin[i] << " ";
     }
 }
