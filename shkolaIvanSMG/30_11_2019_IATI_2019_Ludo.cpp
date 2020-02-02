@@ -88,13 +88,8 @@ int main() {
         neigh[from].push_back(to);
         neigh[to].push_back(from);
     }
-    ///     dfs1
+
     dfs1(0);
-
-    /*for(int i = 0; i < n; i ++) {
-        cout << isWin[i] << " ";
-    }*/
-
     dfs2(0,0);
 
     /*cout << 0;
