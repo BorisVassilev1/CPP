@@ -9,22 +9,42 @@ unsigned char msg[2000000];
 
 int used_bits = 1;
 
-int main() {
+int main(int argc, char** argv) {
 
     string inName, outName;
-    cout << "read from this image: " << endl;
-    cin >> inName;
-    cout << "and write in this file: " << endl;
-    cin >> outName;
-    cout << "bit depth: " << endl;
-    cin >> used_bits;
+
+    if(argc - 1 != 3) {
+        if(argc == 2 && argv[1][0] == '?') {
+            cout << endl
+                 << "   Use: \"imgdec <image> <output file> <bit depth>\"." << endl
+                 << "       image - png image to use." << endl
+                 << "       output file - full name of the output file" << endl
+                 << "       bit depth - count of pixels to use from the image [0-8]" << endl;
+                 return 0;
+        }
+        cout << endl << "   Incorrect number of arguments! Use: \" <imageName> <output file> <bit depth>\". Use \"?\" for help." << endl;
+        return 0;
+    }
+
+    inName = argv[1];
+    outName = argv[2];
+
+    used_bits = stoi(argv[3]);
+
+    //cout << "read from this image: " << endl;
+    //cin >> inName;
+    //cout << "and write in this file: " << endl;
+    //cin >> outName;
+    //cout << "bit depth: " << endl;
+    //cin >> used_bits;
+
     if(used_bits > 8) used_bits = 8;
     if(used_bits < 1) used_bits = 1;
 
 	// read
 	vector<unsigned char> image; //the raw pixels
 	unsigned width, height;
-	lodepng::decode(image, width, height, inName + ".png");
+	lodepng::decode(image, width, height, inName);
 
     int header_length = 32;
     int header = 0;
@@ -67,4 +87,5 @@ int main() {
     out.open(outName, ios::binary);
     //cout << endl << header;
     for(int i = 0; i < header; ++ i) out << msg[i];
+    cout << "Successfully read " << header << " characters!";
 }

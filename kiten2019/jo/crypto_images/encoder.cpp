@@ -4,6 +4,7 @@
 #include "pnglib.h"
 #include <fstream>
 #include <bitset>
+#include <vector>
 using namespace std;
 
 vector<unsigned char> msg;
@@ -13,31 +14,64 @@ int MSG_SIZE;
 int used_bits = 1;
 
 
-int main() {
+int main(int argc, char** argv) {
 
     string inName1, inName2, outName;
-    cout << "write this: " << endl;
-    cin >> inName1;
-    cout << "in this image: " << endl;
-    cin >> inName2;
-    cout << "and save in this image: " << endl;
-    cin >> outName;
-    cout << "bit depth: " << endl;
-    cin >> used_bits;
+
+    //cout << "argument count: " << argc << endl;
+    //for(int i = 0; i < argc; i ++) {
+    //    cout << argv[i] << endl;
+    //}
+
+    if(argc - 1 != 4) {
+        if(argc == 2 && argv[1][0] == '?') {
+            cout << endl
+                 << "   Use: \"imgenc <data> <image> <output file> <bit depth>\"." << endl
+                 << "       data - any type of file to be hidden in the image." << endl
+                 << "       image - png image to use." << endl
+                 << "       output file - output file." << endl
+                 << "       bit depth - count of pixels to use from the image [0-8]" << endl;
+                 return 0;
+        }
+        cout << endl << "   Incorrect number of arguments! Use: \"<data> <image> <output file> <bit depth>\". Use \"?\" for help." << endl;
+        return 0;
+    }
+
+    inName1 = argv[1];
+    inName2 = argv[2];
+    outName = argv[3];
+
+    used_bits = stoi(argv[4]);;
+
+    //cout << "write this: " << endl;
+    //cin >> inName1;
+    //cout << "in this image: " << endl;
+    //cin >> inName2;
+    //cout << "and save in this image: " << endl;
+    //cin >> outName;
+    //cout << "bit depth: " << endl;
+    //cin >> used_bits;
+
     if(used_bits > 8) used_bits = 8;
     if(used_bits < 1) used_bits = 1;
+
 	// read
 	vector<unsigned char> image; //the raw pixels
 	unsigned width, height;
-	lodepng::decode(image, width, height, inName2 + ".png");
+	lodepng::decode(image, width, height, inName2);
 
     ifstream file;
     file.open(inName1, ios::in | ios::binary);
 
     for(int i = 0; !file.eof();  ++ i) {
-        msg.push_back(file.get());
+        unsigned char a = file.get();
+        if (!file)
+            break;
+        msg.push_back(a);
     }
     //cout << MSG_SIZE << endl;
+
+
     MSG_SIZE = msg.size();
     int header = MSG_SIZE;
     int header_length = sizeof(header) * 8;
@@ -76,7 +110,9 @@ int main() {
 
     if(bits_written == MSG_SIZE * 8 + header_length) {
         cout << "Success!" << endl;
-        lodepng::encode(outName + ".png", image, width, height);
+        lodepng::encode(outName, image, width, height);
     }
     else cout << "The message is too large to be hidden in this image!";
+
+    return 0;
 }
