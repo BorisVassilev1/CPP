@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 #include <cmath>
 #include <iostream>
 const int BIRDS_COUNT = 400;
