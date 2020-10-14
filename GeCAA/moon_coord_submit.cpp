@@ -9,11 +9,6 @@ public:
 
     Vector2d(double x = 0, double y = 0) : x(x), y (y) {}
 
-    Vector2d(double x1, double x2, double x3, double y1, double y2, double y3) {
-        x = x1 + x1 / 60. + x3 / 3600.;
-        y = y1 + y2 / 60. + y3 / 3600.;
-    }
-
     Vector2d operator +(const Vector2d& other) {
         Vector2d result(x + other.x, y + other.y);
         return result;
@@ -63,13 +58,4 @@ int main() {
     pam1 = x * pbm1;
     pam = pam1 + paab;
     cout << pam << endl;
-
-    Vector2d real(240 + 33 / 60. + 11.4 / 3600., 51 + 31 / 60. + 06.8 / 3600.);
-
-    cout << paab << " " << paac << endl;
-
-    Vector2d diff = (pam - real);
-    cout << real << endl;
-    cout << diff << " " << diff.length();
-
 }
