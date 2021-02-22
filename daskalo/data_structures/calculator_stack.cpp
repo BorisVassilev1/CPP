@@ -1,31 +1,10 @@
 #include <iostream>
-#include <stack>
+#include "stack_array.cpp"
 
 using namespace std;
 
 class calculator {
     public:
-    static int get_operator_id(const char &a) {
-        switch (a) {
-            case '+' :
-                return 0;
-            case '-' :
-                return 1;
-            case '*' :
-                return 2;
-            case '/' :
-                return 3;
-            case '(' :
-                return 4;
-            case ')' :
-                return 5;
-            case '[' :
-                return 6;
-            case ']' :
-                return 7;
-        }
-        return -1;
-    }
 
     static double eval_sum(const double &a, const double &b) {
         return a + b;
@@ -44,8 +23,19 @@ class calculator {
     }
 
     static constexpr double ( * evaluators[])(const double &, const double &) = {eval_sum, eval_sub, eval_mul, eval_div};
+    
+    static constexpr int ops_count = 8;
+    static constexpr const char op_char_by_id[ops_count] = {'+', '-', '*', '/', '(', ')', '[', ']'};
 
     static constexpr const int precedence[] = {1, 1, 2, 2, 0, 0, 0, 0};
+
+    static int get_operator_id(const char &a) {
+        for(int i = 0; i < ops_count; ++ i) {
+            if(a == op_char_by_id[i])
+                return i;
+        } 
+        return -1;
+    }
 
     static bool is_digit(const char &a) {
         return (a >= '0' && a <= '9');
@@ -81,7 +71,9 @@ class calculator {
 
 
         double value = 0;
-
+        
+        char prev = -1;
+        
         for(int i = 0; i < (int)expression.size(); i ++) {
             const char& curr = expression[i];
 
@@ -105,7 +97,7 @@ class calculator {
                     value = 0;
                 }
 
-                if(!bracket && is_op && (vals.empty() || (!ops.empty() && is_open_bracket(ops.top())))) {
+                if(!bracket && is_op && (vals.empty() || is_open_bracket(get_operator_id(prev)))) {
                     vals.push(0);
                     cout << "pushing0" << endl;
                 }
@@ -135,21 +127,10 @@ class calculator {
                 }
                 continue;
             }
+            if(is_dig || is_op)
+                prev = curr;
         }
 
-        /*cout << endl;
-        while(!vals.empty()) {
-            cout << vals.top() << endl;
-            vals.pop();
-        }
-
-        cout << endl;
-        while(!ops.empty()) {
-            cout << ops.top() << endl;
-            ops.pop();
-        }
-        cout << endl;
-	*/
         return vals.top();
     }
 };
@@ -158,12 +139,13 @@ constexpr double (*calculator::evaluators[])(const double&, const double&);
 
 constexpr int calculator::precedence[];
 
+constexpr char calculator::op_char_by_id[];
+
 int main() {
     string expr;
     getline(cin, expr);
 
     //cout << calculator::eval(2, 3, '+') << endl;
-
 
     cout << calculator::evaluate(expr);
     cout << endl;

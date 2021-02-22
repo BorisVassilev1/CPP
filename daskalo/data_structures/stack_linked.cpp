@@ -13,7 +13,7 @@ class stack { // implementaciq na stack chrez svurzan spisak
     stack_node* first = nullptr; // posledniq element
 
 public:
-    bool is_empty() const{
+    bool empty() const{
         return first == nullptr; // ako nqma purvi vruh
     }
 
@@ -23,7 +23,7 @@ public:
     }
 
     void pop() {
-        if(is_empty()) return; // ne moje da popvame prazen stack
+        if(empty()) return; // ne moje da popvame prazen stack
         stack_node* curr = first; 
         first = (stack_node*) first->next;
         delete curr; // osvobojdavame pamet

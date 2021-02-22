@@ -17,7 +17,7 @@ class stack { // implementaciq na stack chrez dinamichen masiv
         free(arr); // osvobojdavame pametta
     }
     
-    bool is_empty() {
+    bool empty() {
         return length == 0;
     }
 
@@ -25,19 +25,20 @@ class stack { // implementaciq na stack chrez dinamichen masiv
         T val(value); 
         if(length == limit) { // ako masiva e pulen
             limit *= 2;
-            arr = (T*)realloc(arr, limit); // zadeli 2 puti poveche pamet
+            arr = (T*)realloc(arr, limit * sizeof(T)); // zadeli 2 puti poveche pamet
         }
         arr[length++] = val;
     }
 
     void pop() {
-        length --; // mi prosto namalqvame duljinata
+        if(length >= 0)
+            length --; // mi prosto namalqvame duljinata
     }
 
     T& top() {
         return arr[length - 1]; // posledniq element
     }
-    
+
     int size() {
         return length;
     }
