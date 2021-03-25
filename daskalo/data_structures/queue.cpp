@@ -1,7 +1,5 @@
 #include <iostream>
 
-using namespace std;
-
 template<class T>
 class queue {
 
@@ -60,37 +58,7 @@ class queue {
         begin %= limit;
         --length;
     }
-
-    void print_all() {
-        for(int i = 0; i < limit; ++ i) {
-            cout << data[i] << " ";
-        }
-        cout << endl;
-    }
 };
 template<class T>
 int queue<T>::initial_length = 5;
 
-int main() {
-    queue<int> q;
-
-    cout << q.empty() << endl;
-
-    q.push(1);
-    q.push(2);
-    q.push(3);
-    q.push(4);
-    cout << q.size() << endl << endl;
-    q.print_all();
-    q.push(5);
-    q.push(6);
-    //q.push(7);
-    //q.push(8);
-    q.print_all();    
-
-    while(!q.empty()) {
-        cout << q.front() << " " << flush;
-        q.pop();
-    }
-    cout << endl;
-}
