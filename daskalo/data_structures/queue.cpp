@@ -1,18 +1,21 @@
+<<<<<<< Updated upstream
 #include <iostream>
 
+=======
+>>>>>>> Stashed changes
 template<class T>
 class queue {
 
     T* data;
-	
+
 	int begin = 0;
 	int end = 0;
-	
+
 	int length = 0;
 	int limit;
-	
+
 	static int initial_length;
-	
+
 	void resize() {
 		data = (T*)realloc(data, limit * 2 * sizeof(T));
         for(int i = begin; i < limit; i ++) {
@@ -61,4 +64,7 @@ class queue {
 };
 template<class T>
 int queue<T>::initial_length = 5;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
