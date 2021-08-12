@@ -1,0 +1,19 @@
+# Ignore all
+*
+# Unignore all with extensions
+!*.*
+# Unignore all dirs
+!*/
+# Unignore make files
+!makefile
+!Makefile
+
+*.o
+*.zip
+*.out
+*.exe
+*.pdf
+*.dll
+*.png
+*.in
+kiten2019/SFML-2.5.1/

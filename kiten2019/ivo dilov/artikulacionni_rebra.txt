@@ -1,0 +1,22 @@
+		ARTIKULACIONNI REBRA
+
+1)
+	diametur na durvo. 
+	izvesten metod: dfs -> nai dulgiq put -> ot tam vtoro dfs -> tva e
+
+	trqbva ni edno dfs.
+	
+	otgovor!!!:
+	rekursiqta vrushta nai dulgiq put vutre vuv svoeto poddurvo i nai golqmata si dulbochina.
+
+2)
+	artikulacionni rebra v graf vtf;
+	pazim dalbochina. ako nqkoe rebro sochi kum vruh s po-malka dalbchina. 
+3)
+	silno svurzani komponenti v orientiran graf. 
+	
+	red na popvane ot steka;
+	sortirame s counting sort;
+	puskame dfs ot nai golemiq nomer, posle ot po malkiq i tn
+	mnogo hardcore zadacha
+	
