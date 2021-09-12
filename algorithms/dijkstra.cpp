@@ -1,10 +1,12 @@
-/// raboti, no dava memory limit na test 31.
 
 #include <iostream>
 #include <vector>
 #include <queue>
 #include <stack>
 using namespace std;
+
+// this is a solution to https://codeforces.com/contest/20/problem/C
+// a dijkstra algorithm. works, but exceeds memory limit on test 31
 
 const int MAX_N = 1e5;
 

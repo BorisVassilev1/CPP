@@ -53,7 +53,7 @@ constexpr const char *const lose_msg	= "you lose!";
 constexpr const char *const win_msg		= "you won!";
 constexpr const char *const pause_msg	= "paused";
 constexpr const char *const info_msg[] = {
-	"s : start/menu",
+	"s : start menu",
 	"p : pause/unpaues",
 	"r : restart",
 	"q : quit"
@@ -145,7 +145,7 @@ void draw_str(int y, int x, const char *str, int size) {
 			index = 39;
 		} 
 		else if(ch == '/') {
-			index = 30;
+			index = 40;
 		}
 		else if(ch == ' ') {
 			index = 41;
@@ -560,8 +560,6 @@ void redraw(int& ch) {
 }
 
 void* resize_handler(int sig) {
-	//int nh, nw;
-	//getmaxyx(stdscr, nh, nw);
 	int ch = ERR;
 	if(!is_game_running)
 		redraw(ch);

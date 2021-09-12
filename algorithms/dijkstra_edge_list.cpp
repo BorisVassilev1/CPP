@@ -1,6 +1,11 @@
 #include <iostream>
 #include <queue>
 
+// a solution to this problem :
+// https://codeforces.com/contest/20/problem/C
+// uses linked list of edges in order to achieve lower memory usage than neighbours list
+// otherwise, it is a regular dijkstra algorithm
+
 const int MAX_N = 1e5+10;
 const int MAX_M = MAX_N;
 
