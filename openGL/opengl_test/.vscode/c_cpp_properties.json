@@ -1,0 +1,56 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:/MinGW/bin/g++.exe",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "windows-gcc-x86",
+            "compilerArgs": []
+        },
+        {
+            "name": "opengl",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "D:/cpp_libraries/glew-2.1.0-source/include/**",
+                "D:/cpp_libraries/glfw-3.3.5-source/include/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:/MinGW/bin/g++.exe",
+            "cStandard": "gnu17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "windows-gcc-x64",
+            "compilerArgs": [
+                "-I\"D:/cpp_libraries/glfw-3.3.5-source/include\"",
+                "-I\"D:/cpp_libraries/glew-2.1.0-source/include\"",
+                "-L\"D:/cpp_libraries/glfw-3.3.5-compiled/src\"",
+                "-L\"D:/cpp_libraries/glew-2.1.0-compiled/lib\"",
+                "-lglfw3",
+                "-lglew32",
+                "-lopengl32"
+            ],
+            "mergeConfigurations": false,
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/***",
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": false
+            },
+            "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
+}

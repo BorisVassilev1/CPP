@@ -1,0 +1,55 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "g++ build opengl",
+			"command": "C:/MinGW/bin/g++.exe",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}.exe",
+				"-I\"D:/cpp_libraries/glfw-3.3.5-source/include\"", 
+				"-I\"D:/cpp_libraries/glew-2.1.0-source/include\"",
+				"-L\"D:/cpp_libraries/glfw-3.3.5-compiled/src\"",
+				"-L\"D:/cpp_libraries/glew-2.1.0-compiled/lib\"",
+				"-lglfw3",
+				"-lglew32",
+				"-lopengl32",
+				//"-mwindows" // do not open a cmd window when running the exe.
+			],
+			"options": {
+				"cwd": "C:/MinGW/bin"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: C:/MinGW/bin/g++.exe"
+		}
+		// ,
+		// {
+		// 	"type": "cppbuild",
+		// 	"label": "make project",
+		// 	"command": "make",
+		// 	"args": [
+		// 	],
+		// 	"options": {
+		// 		"cwd": "${workspaceFolder}"
+		// 	},
+		// 	"problemMatcher": [
+		// 		"$gcc"
+		// 	],
+		// 	"group": {
+		// 		"kind": "build",
+		// 		"isDefault": true
+		// 	},
+		// 	"detail": "compiler: C:/MinGW/bin/g++.exe"
+		// }
+	]
+}
